@@ -1,0 +1,22 @@
+
+
+// Objects / Variables needed //
+
+- Solar panels
+- 6 electric cars
+- # of miles left
+- Solar electricity per hour - array
+- miles needed for journey
+- charge rate
+- Car reg 
+- Leaving time (rounded down to closest hour)
+- # of cars charging 
+
+
+label each row w/ column numbers for each different button submit. 
+On click submit iterate through the array until it finds and empty slot. 
+if empty, append the user input into the empty space. 
+
+Submit all button instead of individual submits. This will cut down on a lot of code and avoid incorrect placements of data. Validate to make sure all fields are filled in. Create an array with each row as an object.
+
+Refactor later to cut down validation code. Use or (||) statements for 'blank input' alert. 

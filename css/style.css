@@ -1,0 +1,168 @@
+/* line 1, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+/* line 6, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+body {
+  font-family: Helvetica;
+  -webkit-font-smoothing: antialiased;
+  background: #4793e3;
+}
+
+/* line 11, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+h2 {
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  padding: 30px 0;
+}
+
+/* line 20, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+.info-input {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 10px 70px 70px;
+  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  padding: 15px;
+}
+
+/* Table Styles */
+/* line 3, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.table-wrapper {
+  margin: 10px 70px 70px;
+  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* line 8, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.fl-table {
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: white;
+}
+
+/* line 20, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.fl-table td,
+.fl-table th {
+  text-align: center;
+  padding: 8px;
+}
+
+/* line 26, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.fl-table td {
+  border-right: 1px solid #f8f8f8;
+  font-size: 14px;
+}
+
+/* line 31, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.fl-table thead th {
+  color: #ffffff;
+  background: #4fc3a1;
+}
+
+/* line 36, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.fl-table thead th:nth-child(odd) {
+  color: #ffffff;
+  background: #324960;
+}
+
+/* line 41, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.fl-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  /* line 48, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table {
+    display: block;
+    width: 100%;
+  }
+  /* line 52, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .table-wrapper:before {
+    content: "Scroll horizontally >";
+    display: block;
+    text-align: right;
+    font-size: 11px;
+    color: white;
+    padding: 0 0 10px;
+  }
+  /* line 60, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table thead,
+  .fl-table tbody,
+  .fl-table thead th {
+    display: block;
+  }
+  /* line 65, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table thead th:last-child {
+    border-bottom: none;
+  }
+  /* line 68, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table thead {
+    float: left;
+  }
+  /* line 71, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+  }
+  /* line 76, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table td,
+  .fl-table th {
+    padding: 20px 0.625em 0.625em 0.625em;
+    height: 60px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 120px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+  }
+  /* line 88, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table thead th {
+    text-align: left;
+    border-bottom: 1px solid #f7f7f9;
+  }
+  /* line 92, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table tbody tr {
+    display: table-cell;
+  }
+  /* line 95, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table tbody tr:nth-child(odd) {
+    background: none;
+  }
+  /* line 98, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table tr:nth-child(even) {
+    background: transparent;
+  }
+  /* line 101, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table tr td:nth-child(odd) {
+    background: #f8f8f8;
+    border-right: 1px solid #e6e4e4;
+  }
+  /* line 105, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table tr td:nth-child(even) {
+    border-right: 1px solid #e6e4e4;
+  }
+  /* line 108, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+  .fl-table tbody td {
+    display: block;
+    text-align: center;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
