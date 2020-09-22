@@ -82,6 +82,12 @@ const carInfo5 = [];
 const carInfo6 = [];
 
 // =========================================================================//
+// Schedule Generator Variables //
+// =========================================================================//
+
+const genBtn = document.querySelector('.generate-schedule-btn');
+
+// =========================================================================//
 // <=========== Functions ===========>
 // =========================================================================//
 
@@ -92,184 +98,160 @@ const carInfo6 = [];
 
 submit.addEventListener("click", () => {
     if (tCell1.innerHTML === "") {
-        if (carRegInput.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
         } else {
             cell1 = carRegInput.value;
-        };
-        if (currentRange.value === "") {
-            alert("All fields are required");
-        } else {
             cell2 = currentRange.value;
-        };
-        if (rangeNeeded.value === "") {
-            alert("All fields are required");
-        } else {
             cell3 = rangeNeeded.value;
-        };
-        if (leavingTime.value === "") {
-            alert("All fields are required");
-        } else {
             cell4 = leavingTime.value;
             cell4 = Math.floor(cell4);
+            carInfo1.push(cell1);
+            carInfo1.push(cell2);
+            carInfo1.push(cell3);
+            carInfo1.push(cell4);
+            tCell1.innerHTML = carInfo1[0];
+            tCell2.innerHTML = carInfo1[1];
+            tCell3.innerHTML = carInfo1[2];
+            tCell4.innerHTML = carInfo1[3];
         };
-        carInfo1.push(cell1);
-        carInfo1.push(cell2);
-        carInfo1.push(cell3);
-        carInfo1.push(cell4);
-        tCell1.innerHTML = carInfo1[0];
-        tCell2.innerHTML = carInfo1[1];
-        tCell3.innerHTML = carInfo1[2];
-        tCell4.innerHTML = carInfo1[3];
     } else if (tCell5.innerHTML === "") {
-        if (carRegInput.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
         } else {
             cell5 = carRegInput.value;
-        };
-        if (currentRange.value === "") {
-            alert("All fields are required");
-        } else {
             cell6 = currentRange.value;
-        };
-        if (rangeNeeded.value === "") {
-            alert("All fields are required");
-        } else {
             cell7 = rangeNeeded.value;
-        };
-        if (leavingTime.value === "") {
-            alert("All fields are required");
-        } else {
             cell8 = leavingTime.value;
             cell8 = Math.floor(cell8);
+            carInfo2.push(cell5);
+            carInfo2.push(cell6);
+            carInfo2.push(cell7);
+            carInfo2.push(cell8);
+            tCell5.innerHTML = carInfo2[0];
+            tCell6.innerHTML = carInfo2[1];
+            tCell7.innerHTML = carInfo2[2];
+            tCell8.innerHTML = carInfo2[3];
         };
-        carInfo2.push(cell5);
-        carInfo2.push(cell6);
-        carInfo2.push(cell7);
-        carInfo2.push(cell8);
-        tCell5.innerHTML = carInfo2[0];
-        tCell6.innerHTML = carInfo2[1];
-        tCell7.innerHTML = carInfo2[2];
-        tCell8.innerHTML = carInfo2[3];
     } else if (tCell9.innerHTML === "") {
-        if (carRegInput.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
         } else {
             cell9 = carRegInput.value;
-        };
-        if (currentRange.value === "") {
-            alert("All fields are required");
-        } else {
             cell10 = currentRange.value;
-        };
-        if (rangeNeeded.value === "") {
-            alert("All fields are required");
-        } else {
             cell11 = rangeNeeded.value;
-        };
-        if (leavingTime.value === "") {
-            alert("All fields are required");
-        } else {
             cell12 = leavingTime.value;
             cell12 = Math.floor(cell12);
+            carInfo3.push(cell9);
+            carInfo3.push(cell10);
+            carInfo3.push(cell11);
+            carInfo3.push(cell12);
+            tCell9.innerHTML = carInfo3[0];
+            tCell10.innerHTML = carInfo3[1];
+            tCell11.innerHTML = carInfo3[2];
+            tCell12.innerHTML = carInfo3[3];
         };
-        carInfo3.push(cell9);
-        carInfo3.push(cell10);
-        carInfo3.push(cell11);
-        carInfo3.push(cell12);
-        tCell9.innerHTML = carInfo3[0];
-        tCell10.innerHTML = carInfo3[1];
-        tCell11.innerHTML = carInfo3[2];
-        tCell12.innerHTML = carInfo3[3];
     } else if (tCell13.innerHTML === "") {
-        if (carRegInput.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
         } else {
             cell13 = carRegInput.value;
-        };
-        if (currentRange.value === "") {
-            alert("All fields are required");
-        } else {
             cell14 = currentRange.value;
-        };
-        if (rangeNeeded.value === "") {
-            alert("All fields are required");
-        } else {
             cell15 = rangeNeeded.value;
-        };
-        if (leavingTime.value === "") {
-            alert("All fields are required");
-        } else {
             cell16 = leavingTime.value;
             cell16 = Math.floor(cell16);
+            carInfo4.push(cell13);
+            carInfo4.push(cell14);
+            carInfo4.push(cell15);
+            carInfo4.push(cell16);
+            tCell13.innerHTML = carInfo4[0];
+            tCell14.innerHTML = carInfo4[1];
+            tCell15.innerHTML = carInfo4[2];
+            tCell16.innerHTML = carInfo4[3];
         };
-        carInfo4.push(cell13);
-        carInfo4.push(cell14);
-        carInfo4.push(cell15);
-        carInfo4.push(cell16);
-        tCell13.innerHTML = carInfo4[0];
-        tCell14.innerHTML = carInfo4[1];
-        tCell15.innerHTML = carInfo4[2];
-        tCell16.innerHTML = carInfo4[3];
     } else if (tCell17.innerHTML === "") {
-        if (carRegInput.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
         } else {
             cell17 = carRegInput.value;
-        };
-        if (currentRange.value === "") {
-            alert("All fields are required");
-        } else {
             cell18 = currentRange.value;
-        };
-        if (rangeNeeded.value === "") {
-            alert("All fields are required");
-        } else {
             cell19 = rangeNeeded.value;
-        };
-        if (leavingTime.value === "") {
-            alert("All fields are required");
-        } else {
             cell20 = leavingTime.value;
             cell20 = Math.floor(cell20);
+            carInfo5.push(cell17);
+            carInfo5.push(cell18);
+            carInfo5.push(cell19);
+            carInfo5.push(cell20);
+            tCell17.innerHTML = carInfo5[0];
+            tCell18.innerHTML = carInfo5[1];
+            tCell19.innerHTML = carInfo5[2];
+            tCell20.innerHTML = carInfo5[3];
         };
-        carInfo5.push(cell17);
-        carInfo5.push(cell18);
-        carInfo5.push(cell19);
-        carInfo5.push(cell20);
-        tCell17.innerHTML = carInfo5[0];
-        tCell18.innerHTML = carInfo5[1];
-        tCell19.innerHTML = carInfo5[2];
-        tCell20.innerHTML = carInfo5[3];
     } else if (tCell21.innerHTML === "") {
-        if (carRegInput.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
         } else {
             cell21 = carRegInput.value;
-        };
-        if (currentRange.value === "") {
-            alert("All fields are required");
-        } else {
             cell22 = currentRange.value;
-        };
-        if (rangeNeeded.value === "") {
-            alert("All fields are required");
-        } else {
             cell23 = rangeNeeded.value;
-        };
-        if (leavingTime.value === "") {
-            alert("All fields are required");
-        } else {
             cell24 = leavingTime.value;
             cell24 = Math.floor(cell24);
+            carInfo6.push(cell21);
+            carInfo6.push(cell22);
+            carInfo6.push(cell23);
+            carInfo6.push(cell24);
+            tCell21.innerHTML = carInfo6[0];
+            tCell22.innerHTML = carInfo6[1];
+            tCell23.innerHTML = carInfo6[2];
+            tCell24.innerHTML = carInfo6[3];
         };
-        carInfo6.push(cell21);
-        carInfo6.push(cell22);
-        carInfo6.push(cell23);
-        carInfo6.push(cell24);
-        tCell21.innerHTML = carInfo6[0];
-        tCell22.innerHTML = carInfo6[1];
-        tCell23.innerHTML = carInfo6[2];
-        tCell24.innerHTML = carInfo6[3];
+    }
+})
+
+// =========================================================================//
+// Schedule Generator Functions //
+// =========================================================================//
+
+// let genTable = document.getElementById("genTable");
+// let regCell = [];
+// let regNum = [];
+
+// genBtn.addEventListener("click", () => {
+//     regCell.push(carInfo1[0], carInfo2[0], carInfo3[0], carInfo4[0], carInfo5[0], carInfo6[0])
+//     for (let i = 0; i < 6; i++) {
+//         regNum[i] = (document.getElementById("genTable").rows[i + 1].cells[0]);
+//         regNum[i].innerHTML = regCell[i];
+//     }
+
+//     if (carInfo[1] != carInfo1[2]) {
+//         let chargeNeeded = Math.ceil((carInfo1[2] - carInfo1[1]) * 1.10);
+//         let chargeTime = Math.ceil((chargeNeeded / 44));
+//         console.log(chargeTime);
+//         for (let i = chargeTime; i > 0; i--) {
+//             genTable.rows[1].cells[i].classList.add('charge');
+//         }
+//     }
+// })
+
+
+let genTable = document.getElementById("genTable");
+let regCell = [];
+let regNum = [];
+
+genBtn.addEventListener("click", () => {
+    regCell.push(carInfo1[0], carInfo2[0], carInfo3[0], carInfo4[0], carInfo5[0], carInfo6[0])
+    for (let i = 0; i < 6; i++) {
+        regNum[i] = (document.getElementById("genTable").rows[i + 1].cells[0]);
+        regNum[i].innerHTML = regCell[i];
+    }
+    for (let x = 1; x < 7; x++) {
+        if (carInfo1[1] != carInfo1[2]) {
+            let chargeNeeded = Math.ceil((carInfo1[2] - carInfo1[1]) * 1.10);
+            let chargeTime = Math.ceil((chargeNeeded / 44));
+            console.log(chargeTime);
+            for (let i = chargeTime, y = 1; i > 0 && y < 7; i--, y++) {
+                genTable.rows[y].cells[i].classList.add('charge');
+            }
+        }
     }
 })

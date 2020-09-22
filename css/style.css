@@ -23,14 +23,51 @@ h2 {
 }
 
 /* line 20, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
-.info-input {
+p {
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  font-weight: 500;
+}
+
+/* line 29, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+input {
+  width: 80%;
+  padding: 5px;
+}
+
+/* line 34, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+button {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* line 40, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+.input-container {
   display: flex;
   align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+/* line 46, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+.info-input {
+  display: flex;
+  align-items: center;
   flex-direction: column;
   margin: 10px 70px 70px;
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
-  width: 50%;
+  width: 25%;
   padding: 15px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+/* line 58, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+.schedule-table {
+  width: 100%;
 }
 
 /* Table Styles */
@@ -163,6 +200,11 @@ h2 {
     display: block;
     text-align: center;
   }
+}
+
+/* line 116, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.charge {
+  background-color: green;
 }
 
 /*# sourceMappingURL=style.css.map */
