@@ -73,14 +73,14 @@ let tCell24 = document.querySelector('.cell-24');
 // =========================================================================//
 // User Input Data Arrays //
 // =========================================================================//
-
-const carInfo1 = [];
-const carInfo2 = [];
-const carInfo3 = [];
-const carInfo4 = [];
-const carInfo5 = [];
-const carInfo6 = [];
-
+const carInfo = [
+    carInfo1 = [],
+    carInfo2 = [],
+    carInfo3 = [],
+    carInfo4 = [],
+    carInfo5 = [],
+    carInfo6 = []
+];
 // =========================================================================//
 // Schedule Generator Variables //
 // =========================================================================//
@@ -106,10 +106,10 @@ submit.addEventListener("click", () => {
             cell3 = rangeNeeded.value;
             cell4 = leavingTime.value;
             cell4 = Math.floor(cell4);
-            carInfo1.push(cell1);
-            carInfo1.push(cell2);
-            carInfo1.push(cell3);
-            carInfo1.push(cell4);
+            carInfo[0].push(cell1);
+            carInfo[0].push(cell2);
+            carInfo[0].push(cell3);
+            carInfo[0].push(cell4);
             tCell1.innerHTML = carInfo1[0];
             tCell2.innerHTML = carInfo1[1];
             tCell3.innerHTML = carInfo1[2];
@@ -124,10 +124,10 @@ submit.addEventListener("click", () => {
             cell7 = rangeNeeded.value;
             cell8 = leavingTime.value;
             cell8 = Math.floor(cell8);
-            carInfo2.push(cell5);
-            carInfo2.push(cell6);
-            carInfo2.push(cell7);
-            carInfo2.push(cell8);
+            carInfo[1].push(cell5);
+            carInfo[1].push(cell6);
+            carInfo[1].push(cell7);
+            carInfo[1].push(cell8);
             tCell5.innerHTML = carInfo2[0];
             tCell6.innerHTML = carInfo2[1];
             tCell7.innerHTML = carInfo2[2];
@@ -142,10 +142,10 @@ submit.addEventListener("click", () => {
             cell11 = rangeNeeded.value;
             cell12 = leavingTime.value;
             cell12 = Math.floor(cell12);
-            carInfo3.push(cell9);
-            carInfo3.push(cell10);
-            carInfo3.push(cell11);
-            carInfo3.push(cell12);
+            carInfo[2].push(cell9);
+            carInfo[2].push(cell10);
+            carInfo[2].push(cell11);
+            carInfo[2].push(cell12);
             tCell9.innerHTML = carInfo3[0];
             tCell10.innerHTML = carInfo3[1];
             tCell11.innerHTML = carInfo3[2];
@@ -160,10 +160,10 @@ submit.addEventListener("click", () => {
             cell15 = rangeNeeded.value;
             cell16 = leavingTime.value;
             cell16 = Math.floor(cell16);
-            carInfo4.push(cell13);
-            carInfo4.push(cell14);
-            carInfo4.push(cell15);
-            carInfo4.push(cell16);
+            carInfo[3].push(cell13);
+            carInfo[3].push(cell14);
+            carInfo[3].push(cell15);
+            carInfo[3].push(cell16);
             tCell13.innerHTML = carInfo4[0];
             tCell14.innerHTML = carInfo4[1];
             tCell15.innerHTML = carInfo4[2];
@@ -178,10 +178,10 @@ submit.addEventListener("click", () => {
             cell19 = rangeNeeded.value;
             cell20 = leavingTime.value;
             cell20 = Math.floor(cell20);
-            carInfo5.push(cell17);
-            carInfo5.push(cell18);
-            carInfo5.push(cell19);
-            carInfo5.push(cell20);
+            carInfo[4].push(cell17);
+            carInfo[4].push(cell18);
+            carInfo[4].push(cell19);
+            carInfo[4].push(cell20);
             tCell17.innerHTML = carInfo5[0];
             tCell18.innerHTML = carInfo5[1];
             tCell19.innerHTML = carInfo5[2];
@@ -196,10 +196,10 @@ submit.addEventListener("click", () => {
             cell23 = rangeNeeded.value;
             cell24 = leavingTime.value;
             cell24 = Math.floor(cell24);
-            carInfo6.push(cell21);
-            carInfo6.push(cell22);
-            carInfo6.push(cell23);
-            carInfo6.push(cell24);
+            carInfo[5].push(cell21);
+            carInfo[5].push(cell22);
+            carInfo[5].push(cell23);
+            carInfo[5].push(cell24);
             tCell21.innerHTML = carInfo6[0];
             tCell22.innerHTML = carInfo6[1];
             tCell23.innerHTML = carInfo6[2];
@@ -212,46 +212,55 @@ submit.addEventListener("click", () => {
 // Schedule Generator Functions //
 // =========================================================================//
 
-// let genTable = document.getElementById("genTable");
-// let regCell = [];
-// let regNum = [];
-
-// genBtn.addEventListener("click", () => {
-//     regCell.push(carInfo1[0], carInfo2[0], carInfo3[0], carInfo4[0], carInfo5[0], carInfo6[0])
-//     for (let i = 0; i < 6; i++) {
-//         regNum[i] = (document.getElementById("genTable").rows[i + 1].cells[0]);
-//         regNum[i].innerHTML = regCell[i];
-//     }
-
-//     if (carInfo[1] != carInfo1[2]) {
-//         let chargeNeeded = Math.ceil((carInfo1[2] - carInfo1[1]) * 1.10);
-//         let chargeTime = Math.ceil((chargeNeeded / 44));
-//         console.log(chargeTime);
-//         for (let i = chargeTime; i > 0; i--) {
-//             genTable.rows[1].cells[i].classList.add('charge');
-//         }
-//     }
-// })
-
-
-let genTable = document.getElementById("genTable");
+var z = 0;
+var y = 1;
+var genTable = document.getElementById("genTable");
 let regCell = [];
 let regNum = [];
+let colPower = [40, 50, 60, 70, 80, 70, 70, 60, 50, 40];
+let colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
+var cellNumber = 1;
+let powerLeft = 0;
+let colCount = 0;
+
+// Use  result with an 'if' statement that loops to the next cell if powerLeft < 11. 2 for loops. First loops each car, second loops each cell. Use chargeTime to determine how many loops are needed for each car / cells. 
+
+function powerUsed(power1, power2) {
+    powerLeft = power1 - power2;
+}
+
+function addPower(power1, power2) {    // e.g colPowerUsed + 11   then colPowerUsed [0] = result
+    result = power1 + power2;
+}
+
+
 
 genBtn.addEventListener("click", () => {
-    regCell.push(carInfo1[0], carInfo2[0], carInfo3[0], carInfo4[0], carInfo5[0], carInfo6[0])
+    regCell.push(carInfo[0][0], carInfo[1][0], carInfo[2][0], carInfo[3][0], carInfo[4][0], carInfo[5][0]);
     for (let i = 0; i < 6; i++) {
         regNum[i] = (document.getElementById("genTable").rows[i + 1].cells[0]);
         regNum[i].innerHTML = regCell[i];
     }
-    for (let x = 1; x < 7; x++) {
-        if (carInfo1[1] != carInfo1[2]) {
-            let chargeNeeded = Math.ceil((carInfo1[2] - carInfo1[1]) * 1.10);
-            let chargeTime = Math.ceil((chargeNeeded / 44));
-            console.log(chargeTime);
-            for (let i = chargeTime, y = 1; i > 0 && y < 7; i--, y++) {
-                genTable.rows[y].cells[i].classList.add('charge');
+    for (var x = 0; x < 6; x++) {
+        let chargeNeeded = Math.ceil((carInfo[x][2] - carInfo[x][1]) * 1.10);
+        let chargeTime = Math.ceil((chargeNeeded / 44));
+        colCount = 0;
+        cellNumber = 1;
+        for (let cellsNeeded = chargeTime; cellsNeeded > 0; cellsNeeded--) {
+            console.log(cellsNeeded);
+            powerUsed(colPower[colCount], colPowerUsed[colCount]);
+            if (powerLeft > 11) {
+                genTable.rows[y].cells[cellNumber].classList.add('charge');
+                addPower(colPowerUsed[colCount], 11);
+                colPowerUsed[colCount] = result;
+                cellNumber++;
+                colCount++;
+            } else {
+                cellsNeeded++;
+                cellNumber++;
+                colCount++;
             }
         }
+        y = (y + 1);
     }
 })

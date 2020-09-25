@@ -207,4 +207,9 @@ button {
   background-color: green;
 }
 
+/* line 120, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
+.no-charge {
+  background-color: red;
+}
+
 /*# sourceMappingURL=style.css.map */
