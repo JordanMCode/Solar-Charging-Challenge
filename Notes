@@ -20,3 +20,21 @@ if empty, append the user input into the empty space.
 Submit all button instead of individual submits. This will cut down on a lot of code and avoid incorrect placements of data. Validate to make sure all fields are filled in. Create an array with each row as an object.
 
 Refactor later to cut down validation code. Use or (||) statements for 'blank input' alert. 
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Variable - each column solar power cap (e.g column 2 cap is 40.)
+Variable - Total power used per column
+Variable - End ( uses 'finish time' entry to calculate a cell value - 5pm (17) finish would be 10, 4pm (16) finish would be 9 etc )
+
+Function - if total power used per column < column solar power cap, change cell to charge - else, check next column total power used, if < total power used < change to charge, else etc etc.
+
+Function  - if finish time  = 17, end = 10. (repeat for each hour / cell) - each car should have an end time value stored. 
+
+Function - check end time value, ensure cells including and after this one are disallowed from charging (Not 100% how to go about this one) checking with and if statement, looping through each cell to check.
+                
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
