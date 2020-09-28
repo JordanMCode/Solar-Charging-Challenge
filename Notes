@@ -38,3 +38,10 @@ Function - check end time value, ensure cells including and after this one are d
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Function that sorts vehicles from most charge needed to least. Prioritise most charge needed to less, run loops in that order.
+
+Use CellNumber to loop back and re-run charge loop when it's iterated through all of the cells and can't find a spot with solar energy.
+
+Check if an element has a class with element.classList.contains(class)
+
+Use array sorting with arrayName.sort()  

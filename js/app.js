@@ -81,11 +81,23 @@ const carInfo = [
     carInfo5 = [],
     carInfo6 = []
 ];
+
 // =========================================================================//
 // Schedule Generator Variables //
 // =========================================================================//
 
 const genBtn = document.querySelector('.generate-schedule-btn');
+var z = 0;
+var y = 1;
+var genTable = document.getElementById("genTable");
+let regCell = [];
+let regNum = [];
+let colPower = [40, 50, 60, 70, 80, 70, 70, 60, 50, 40];
+let colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
+var cellNumber = 1;
+let powerLeft = 0;
+let colCount = 0;
+let exitCell = [document.getElementById("exit-1"), document.getElementById("exit-2"), document.getElementById("exit-3"), document.getElementById("exit-4"), document.getElementById("exit-5"), document.getElementById("exit-6")]
 
 // =========================================================================//
 // <=========== Functions ===========>
@@ -95,6 +107,12 @@ const genBtn = document.querySelector('.generate-schedule-btn');
 // =========================================================================//
 // User Info Submit Function
 // =========================================================================//
+
+
+// This function makes sure all fields are filled, then providing they are, each piece of user data is added to a table to view. // 
+// Additional validation is needed - AlphaNumeric for Registration and Numeric (integer for current range and range needed) for the remainder. Will add this after refactor // 
+
+
 
 submit.addEventListener("click", () => {
     if (tCell1.innerHTML === "") {
@@ -212,28 +230,26 @@ submit.addEventListener("click", () => {
 // Schedule Generator Functions //
 // =========================================================================//
 
-var z = 0;
-var y = 1;
-var genTable = document.getElementById("genTable");
-let regCell = [];
-let regNum = [];
-let colPower = [40, 50, 60, 70, 80, 70, 70, 60, 50, 40];
-let colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
-var cellNumber = 1;
-let powerLeft = 0;
-let colCount = 0;
 
-// Use  result with an 'if' statement that loops to the next cell if powerLeft < 11. 2 for loops. First loops each car, second loops each cell. Use chargeTime to determine how many loops are needed for each car / cells. 
 
-function powerUsed(power1, power2) {
+
+function powerUsed(power1, power2) {  // Simple subtraction to calculate each hours power used in order to decide if a car can solar charge or not. //
     powerLeft = power1 - power2;
 }
 
-function addPower(power1, power2) {    // e.g colPowerUsed + 11   then colPowerUsed [0] = result
+function addPower(power1, power2) {    // Simple addition for power total to add to each column //
     result = power1 + power2;
 }
 
+function exitRange(a, b) {
+    exitRangeTotal = (parseInt(a) + parseInt(b));   // Simple addition for calculating exit range after charging, needed interger identifier otherwise totals were concatonating as strings //
+}
 
+
+
+// Main function for creating the charging schedule. Lots of extra functionality can be added to this, which I will do when I refactor / rebuild. So far the function grabs the registration names in order of user input, and adds them to the schedule table one by one. As each reg is added, the charge time needed is calculated, then the amount of solar energy is calculated. If the hour selected cannot facilitate full charging for the car (11kwh) then the next cell is checked. The schedule so far will ensure cars are charged the amount needed for their next journey = 10%, and display this exit range in the schedule also. // 
+
+// To be added - Factor in end time to ensure charging before leaving. Force charging even if no solar energy is available if end time doesn't allow only solar usage. Indicate this on the schedule with a different cell colour.
 
 genBtn.addEventListener("click", () => {
     regCell.push(carInfo[0][0], carInfo[1][0], carInfo[2][0], carInfo[3][0], carInfo[4][0], carInfo[5][0]);
@@ -244,10 +260,11 @@ genBtn.addEventListener("click", () => {
     for (var x = 0; x < 6; x++) {
         let chargeNeeded = Math.ceil((carInfo[x][2] - carInfo[x][1]) * 1.10);
         let chargeTime = Math.ceil((chargeNeeded / 44));
+        exitRange(chargeNeeded, carInfo[x][1]);
+        exitCell[x].innerHTML = exitRangeTotal;
         colCount = 0;
         cellNumber = 1;
         for (let cellsNeeded = chargeTime; cellsNeeded > 0; cellsNeeded--) {
-            console.log(cellsNeeded);
             powerUsed(colPower[colCount], colPowerUsed[colCount]);
             if (powerLeft > 11) {
                 genTable.rows[y].cells[cellNumber].classList.add('charge');
