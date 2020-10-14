@@ -11,6 +11,7 @@ const currentRange = document.querySelector('.current-range');
 const rangeNeeded = document.querySelector('.range-needed');
 const leavingTime = document.querySelector('.leaving-time');
 const submit = document.querySelector('.submit');
+var dateValid = /^\d+\.\d{2}$/;
 
 // =========================================================================//
 // Stored Table Values //
@@ -108,17 +109,24 @@ let exitCell = [document.getElementById("exit-1"), document.getElementById("exit
 // User Info Submit Function
 // =========================================================================//
 
+// Function for clearing all fields when user input is submitted to the table // 
+
+function clearFields(field1, field2, field3, field4) {
+    document.querySelector(field1).value = '';
+    document.querySelector(field2).value = '';
+    document.querySelector(field3).value = '';
+    document.querySelector(field4).value = '';
+}
+
 
 // This function makes sure all fields are filled, then providing they are, each piece of user data is added to a table to view. // 
 // Additional validation is needed - AlphaNumeric for Registration and Numeric (integer for current range and range needed) for the remainder. Will add this after refactor // 
-
-
 
 submit.addEventListener("click", () => {
     if (tCell1.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
-        } else {
+        } if (dateValid.test(leavingTime.value)) {
             cell1 = carRegInput.value;
             cell2 = currentRange.value;
             cell3 = rangeNeeded.value;
@@ -132,11 +140,13 @@ submit.addEventListener("click", () => {
             tCell2.innerHTML = carInfo1[1];
             tCell3.innerHTML = carInfo1[2];
             tCell4.innerHTML = carInfo1[3];
-        };
+        } else {
+            alert("Please use the indicated time format");
+        }
     } else if (tCell5.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
-        } else {
+        } if (dateValid.test(leavingTime.value)) {
             cell5 = carRegInput.value;
             cell6 = currentRange.value;
             cell7 = rangeNeeded.value;
@@ -150,11 +160,13 @@ submit.addEventListener("click", () => {
             tCell6.innerHTML = carInfo2[1];
             tCell7.innerHTML = carInfo2[2];
             tCell8.innerHTML = carInfo2[3];
-        };
+        } else {
+            alert("Please use the indicated time format");
+        }
     } else if (tCell9.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
-        } else {
+        } if (dateValid.test(leavingTime.value)) {
             cell9 = carRegInput.value;
             cell10 = currentRange.value;
             cell11 = rangeNeeded.value;
@@ -168,11 +180,13 @@ submit.addEventListener("click", () => {
             tCell10.innerHTML = carInfo3[1];
             tCell11.innerHTML = carInfo3[2];
             tCell12.innerHTML = carInfo3[3];
-        };
+        } else {
+            alert("Please use the indicated time format");
+        }
     } else if (tCell13.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
-        } else {
+        } if (dateValid.test(leavingTime.value)) {
             cell13 = carRegInput.value;
             cell14 = currentRange.value;
             cell15 = rangeNeeded.value;
@@ -186,11 +200,13 @@ submit.addEventListener("click", () => {
             tCell14.innerHTML = carInfo4[1];
             tCell15.innerHTML = carInfo4[2];
             tCell16.innerHTML = carInfo4[3];
-        };
+        } else {
+            alert("Please use the indicated time format");
+        }
     } else if (tCell17.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
-        } else {
+        } if (dateValid.test(leavingTime.value)) {
             cell17 = carRegInput.value;
             cell18 = currentRange.value;
             cell19 = rangeNeeded.value;
@@ -204,11 +220,13 @@ submit.addEventListener("click", () => {
             tCell18.innerHTML = carInfo5[1];
             tCell19.innerHTML = carInfo5[2];
             tCell20.innerHTML = carInfo5[3];
-        };
+        } else {
+            alert("Please use the indicated time format");
+        }
     } else if (tCell21.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
-        } else {
+        } if (dateValid.test(leavingTime.value)) {
             cell21 = carRegInput.value;
             cell22 = currentRange.value;
             cell23 = rangeNeeded.value;
@@ -222,9 +240,14 @@ submit.addEventListener("click", () => {
             tCell22.innerHTML = carInfo6[1];
             tCell23.innerHTML = carInfo6[2];
             tCell24.innerHTML = carInfo6[3];
-        };
+            document.querySelector(".submit").style.display = "none";
+        } else {
+            alert("Please use the indicated time format");
+        }
     }
+    clearFields('.reg-input', '.current-range', '.range-needed', '.leaving-time');
 })
+
 
 // =========================================================================//
 // Schedule Generator Functions //
