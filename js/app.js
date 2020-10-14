@@ -126,6 +126,7 @@ submit.addEventListener("click", () => {
     if (tCell1.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
+            return;
         } if (dateValid.test(leavingTime.value)) {
             cell1 = carRegInput.value;
             cell2 = currentRange.value;
@@ -142,10 +143,12 @@ submit.addEventListener("click", () => {
             tCell4.innerHTML = carInfo1[3];
         } else {
             alert("Please use the indicated time format");
+            return;
         }
     } else if (tCell5.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
+            return;
         } if (dateValid.test(leavingTime.value)) {
             cell5 = carRegInput.value;
             cell6 = currentRange.value;
@@ -162,10 +165,12 @@ submit.addEventListener("click", () => {
             tCell8.innerHTML = carInfo2[3];
         } else {
             alert("Please use the indicated time format");
+            return;
         }
     } else if (tCell9.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
+            return;
         } if (dateValid.test(leavingTime.value)) {
             cell9 = carRegInput.value;
             cell10 = currentRange.value;
@@ -182,10 +187,12 @@ submit.addEventListener("click", () => {
             tCell12.innerHTML = carInfo3[3];
         } else {
             alert("Please use the indicated time format");
+            return;
         }
     } else if (tCell13.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
+            return;
         } if (dateValid.test(leavingTime.value)) {
             cell13 = carRegInput.value;
             cell14 = currentRange.value;
@@ -202,10 +209,12 @@ submit.addEventListener("click", () => {
             tCell16.innerHTML = carInfo4[3];
         } else {
             alert("Please use the indicated time format");
+            return;
         }
     } else if (tCell17.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
+            return;
         } if (dateValid.test(leavingTime.value)) {
             cell17 = carRegInput.value;
             cell18 = currentRange.value;
@@ -222,10 +231,12 @@ submit.addEventListener("click", () => {
             tCell20.innerHTML = carInfo5[3];
         } else {
             alert("Please use the indicated time format");
+            return;
         }
     } else if (tCell21.innerHTML === "") {
         if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
             alert("All fields are required");
+            return;
         } if (dateValid.test(leavingTime.value)) {
             cell21 = carRegInput.value;
             cell22 = currentRange.value;
@@ -243,6 +254,7 @@ submit.addEventListener("click", () => {
             document.querySelector(".submit").style.display = "none";
         } else {
             alert("Please use the indicated time format");
+            return;
         }
     }
     clearFields('.reg-input', '.current-range', '.range-needed', '.leaving-time');
