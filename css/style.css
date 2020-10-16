@@ -19,10 +19,9 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: white;
-  padding: 30px 0;
 }
 
-/* line 20, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+/* line 19, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
 p {
   text-align: center;
   font-size: 14px;
@@ -32,17 +31,18 @@ p {
   font-weight: 500;
 }
 
-/* line 29, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+/* line 28, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
 input {
   width: 80%;
   padding: 5px;
 }
 
-/* line 34, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+/* line 33, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
 button {
   margin-top: 15px;
   padding: 10px;
   border-radius: 5px;
+  font-family: Helvetica;
 }
 
 /* line 40, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
@@ -57,23 +57,28 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 10px 70px 70px;
+  margin: 10px 0 10px 70px;
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
-  width: 25%;
   padding: 15px;
   border: 1px solid white;
   border-radius: 3px;
 }
 
-/* line 58, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+/* line 57, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
 .schedule-table {
   width: 100%;
+}
+
+/* line 61, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
+.reset-btn {
+  margin: 0;
+  padding: 5px 20px 5px 20px;
 }
 
 /* Table Styles */
 /* line 3, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
 .table-wrapper {
-  margin: 10px 70px 70px;
+  margin: 10px 70px 25px;
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
 }
 

@@ -11,6 +11,13 @@ const currentRange = document.querySelector('.current-range');
 const rangeNeeded = document.querySelector('.range-needed');
 const leavingTime = document.querySelector('.leaving-time');
 const submit = document.querySelector('.submit');
+const reset1 = document.getElementById("reset-1");
+const reset2 = document.getElementById("reset-2");
+const reset3 = document.getElementById("reset-3");
+const reset4 = document.getElementById("reset-4");
+const reset5 = document.getElementById("reset-5");
+const reset6 = document.getElementById("reset-6");
+const clearBtn = document.getElementById("clear-btn");
 var dateValid = /^\d+\.\d{2}$/;
 
 // =========================================================================//
@@ -116,6 +123,16 @@ function clearFields(field1, field2, field3, field4) {
     document.querySelector(field2).value = '';
     document.querySelector(field3).value = '';
     document.querySelector(field4).value = '';
+}
+
+// Function to reset a row in the info table // 
+
+function clearRow(carInfo, tCell1, tCell2, tCell3, tCell4) {
+    carInfo.length = 0;
+    tCell1.innerHTML = "";
+    tCell2.innerHTML = "";
+    tCell3.innerHTML = "";
+    tCell4.innerHTML = "";
 }
 
 
@@ -261,6 +278,29 @@ submit.addEventListener("click", () => {
 })
 
 
+
+// Function to handle the reset buttons on the car info table. Clears the table and the Car info array to make way for new data //
+
+reset1.addEventListener("click", () => {
+    clearRow(carInfo1, tCell1, tCell2, tCell3, tCell4);
+})
+
+reset2.addEventListener("click", () => {
+    clearRow(carInfo2, tCell5, tCell6, tCell7, tCell8);
+})
+reset3.addEventListener("click", () => {
+    clearRow(carInfo3, tCell9, tCell10, tCell11, tCell12);
+})
+reset4.addEventListener("click", () => {
+    clearRow(carInfo4, tCell13, tCell14, tCell15, tCell16);
+})
+reset5.addEventListener("click", () => {
+    clearRow(carInfo5, tCell17, tCell18, tCell19, tCell20);
+})
+reset6.addEventListener("click", () => {
+    clearRow(carInfo6, tCell21, tCell22, tCell23, tCell24);
+})
+
 // =========================================================================//
 // Schedule Generator Functions //
 // =========================================================================//
@@ -281,13 +321,25 @@ function exitRange(a, b) {
 }
 
 
+function clearReg(i, RegNumber) {
+    carInfo[i][0].push("");
+    document.getElementsByClassName("car-reg-" + RegNumber).innerHTML = "N/A";
+}
+
 
 // Main function for creating the charging schedule. Lots of extra functionality can be added to this, which I will do when I refactor / rebuild. So far the function grabs the registration names in order of user input, and adds them to the schedule table one by one. As each reg is added, the charge time needed is calculated, then the amount of solar energy is calculated. If the hour selected cannot facilitate full charging for the car (11kwh) then the next cell is checked. The schedule so far will ensure cars are charged the amount needed for their next journey = 10%, and display this exit range in the schedule also. // 
 
 // To be added - Factor in end time to ensure charging before leaving. Force charging even if no solar energy is available if end time doesn't allow only solar usage. Indicate this on the schedule with a different cell colour.
 
 genBtn.addEventListener("click", () => {
-    regCell.push(carInfo[0][0], carInfo[1][0], carInfo[2][0], carInfo[3][0], carInfo[4][0], carInfo[5][0]);
+    regCell.length = 0;
+    for (i = 0; i < 6; i++) {
+        if (carInfo[i][0] != undefined) {
+            regCell.push(carInfo[i][0]);
+        } else {
+            regCell.push("N/A")
+        }
+    }
     for (let i = 0; i < 6; i++) {
         regNum[i] = (document.getElementById("genTable").rows[i + 1].cells[0]);
         regNum[i].innerHTML = regCell[i];
@@ -296,12 +348,17 @@ genBtn.addEventListener("click", () => {
         let chargeNeeded = Math.ceil((carInfo[x][2] - carInfo[x][1]) * 1.10);
         let chargeTime = Math.ceil((chargeNeeded / 44));
         exitRange(chargeNeeded, carInfo[x][1]);
-        exitCell[x].innerHTML = exitRangeTotal;
+        if (isNaN(exitRangeTotal)) {
+            exitCell[x].innerHTML = "N/A";
+        } else {
+            exitCell[x].innerHTML = exitRangeTotal;
+        }
         colCount = 0;
         cellNumber = 1;
         for (let cellsNeeded = chargeTime; cellsNeeded > 0; cellsNeeded--) {
             powerUsed(colPower[colCount], colPowerUsed[colCount]);
             if (powerLeft > 11) {
+                console.log(y)
                 genTable.rows[y].cells[cellNumber].classList.add('charge');
                 addPower(colPowerUsed[colCount], 11);
                 colPowerUsed[colCount] = result;
@@ -315,4 +372,22 @@ genBtn.addEventListener("click", () => {
         }
         y = (y + 1);
     }
+})
+
+
+// Function to clear all cells in the Generated schedule table // 
+
+clearBtn.addEventListener("click", () => {
+    y = 1;
+    cellNumber = 0;
+    for (y = 1; y <= 6; y++) {
+        for (cellNumber = 0; cellNumber < 12; cellNumber++) {
+            genTable.rows[y].cells[cellNumber].innerHTML = "";
+            genTable.rows[y].cells[cellNumber].classList.remove('charge');
+        }
+    }
+    y = 1;
+    cellNumber = 0;
+    powerused = 0;
+    colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
 })
