@@ -9,7 +9,7 @@
 body {
   font-family: Helvetica;
   -webkit-font-smoothing: antialiased;
-  background: #4793e3;
+  background: #00417b;
 }
 
 /* line 11, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_base.scss */
@@ -112,13 +112,13 @@ button {
 /* line 32, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
 .fl-table thead th {
   color: #ffffff;
-  background: #4fc3a1;
+  background: #666;
 }
 
 /* line 37, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
-  background: #324960;
+  background: #36bff2;
 }
 
 /* line 42, C:/Users/Jordan/Desktop/Code-Projects/Solar-Charging/Solar-Challenge-1/Solar-Charging-Challenge/sass/partials/_table.scss */

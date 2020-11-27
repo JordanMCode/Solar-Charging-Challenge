@@ -327,11 +327,23 @@ function clearReg(i, RegNumber) {
 }
 
 
-// Main function for creating the charging schedule. Lots of extra functionality can be added to this, which I will do when I refactor / rebuild. So far the function grabs the registration names in order of user input, and adds them to the schedule table one by one. As each reg is added, the charge time needed is calculated, then the amount of solar energy is calculated. If the hour selected cannot facilitate full charging for the car (11kwh) then the next cell is checked. The schedule so far will ensure cars are charged the amount needed for their next journey = 10%, and display this exit range in the schedule also. // 
+// Main function for creating the charging schedule. Lots of extra functionality can be added to this, which I will do when I refactor / rebuild. So far the function grabs the registration names in order of user input, and adds them to the schedule table one by one. As each reg is added, the charge time needed is calculated, then the amount of solar energy is calculated. If the hour selected cannot facilitate full charging for the car (11kwh) then the next cell is checked. The schedule so far will ensure cars are charged the amount needed for their next journey + 10%, and display this exit range in the schedule also. // 
 
 // To be added - Factor in end time to ensure charging before leaving. Force charging even if no solar energy is available if end time doesn't allow only solar usage. Indicate this on the schedule with a different cell colour.
 
 genBtn.addEventListener("click", () => {
+    y = 1;
+    cellNumber = 0;
+    for (y = 1; y <= 6; y++) {
+        for (cellNumber = 0; cellNumber < 12; cellNumber++) {
+            genTable.rows[y].cells[cellNumber].innerHTML = "";
+            genTable.rows[y].cells[cellNumber].classList.remove('charge');
+        }
+    }
+    y = 1;
+    cellNumber = 0;
+    powerused = 0;
+    colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
     regCell.length = 0;
     for (i = 0; i < 6; i++) {
         if (carInfo[i][0] != undefined) {
@@ -353,29 +365,35 @@ genBtn.addEventListener("click", () => {
         } else {
             exitCell[x].innerHTML = exitRangeTotal;
         }
-        colCount = 0;
-        cellNumber = 1;
-        for (let cellsNeeded = chargeTime; cellsNeeded > 0; cellsNeeded--) {
-            powerUsed(colPower[colCount], colPowerUsed[colCount]);
-            if (powerLeft > 11) {
-                console.log(y)
-                genTable.rows[y].cells[cellNumber].classList.add('charge');
-                addPower(colPowerUsed[colCount], 11);
-                colPowerUsed[colCount] = result;
-                cellNumber++;
-                colCount++;
-            } else {
-                cellsNeeded++;
-                cellNumber++;
-                colCount++;
+        for (var x = 0; i > 10; i++) {
+            colCount = 0;
+            cellNumber = 1;
+            for (let cellsNeeded = chargeTime; cellsNeeded > 0; cellsNeeded--) {
+                powerUsed(colPower[colCount], colPowerUsed[colCount]);
+                if (powerLeft > 11) {
+                    console.log(y)
+                    genTable.rows[y].cells[cellNumber].classList.add('charge');
+                    addPower(colPowerUsed[colCount], 11);
+                    colPowerUsed[colCount] = result;
+                    cellNumber++;
+                    colCount++;
+                } else {
+                    cellsNeeded++;
+                    cellNumber++;
+                    colCount++;
+                }
             }
         }
-        y = (y + 1);
-    }
+        // THis function is taken from an unrelated piece of code, it's useless here. Let's see who notices it on the video.
+
+        genImage.addEventListener("click", () => {
+            getImg();
+            y = (y + 1);
+        }
 })
 
 
-// Function to clear all cells in the Generated schedule table // 
+// Function to clear all cells in the Generated schedule table //  This functionality is now also built in to the generate schedule function to allow edits to be made without clearing the whole schedule. I left the clear schedule button in to allow it to be cleared entirely is wanted, however. 
 
 clearBtn.addEventListener("click", () => {
     y = 1;
