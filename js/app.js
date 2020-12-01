@@ -9,7 +9,7 @@
 const carRegInput = document.querySelector('.reg-input');
 const currentRange = document.querySelector('.current-range');
 const rangeNeeded = document.querySelector('.range-needed');
-const leavingTime = document.querySelector('.leaving-time');
+const leavingTime = document.getElementById('end-time');
 const submit = document.querySelector('.submit');
 const reset1 = document.getElementById("reset-1");
 const reset2 = document.getElementById("reset-2");
@@ -19,6 +19,8 @@ const reset5 = document.getElementById("reset-5");
 const reset6 = document.getElementById("reset-6");
 const clearBtn = document.getElementById("clear-btn");
 var dateValid = /^\d+\.\d{2}$/;
+let hourDiff = "";
+let formattedEndTime = "";
 
 // =========================================================================//
 // Stored Table Values //
@@ -118,11 +120,10 @@ let exitCell = [document.getElementById("exit-1"), document.getElementById("exit
 
 // Function for clearing all fields when user input is submitted to the table // 
 
-function clearFields(field1, field2, field3, field4) {
+function clearFields(field1, field2, field3) {
     document.querySelector(field1).value = '';
     document.querySelector(field2).value = '';
     document.querySelector(field3).value = '';
-    document.querySelector(field4).value = '';
 }
 
 // Function to reset a row in the info table // 
@@ -135,47 +136,70 @@ function clearRow(carInfo, tCell1, tCell2, tCell3, tCell4) {
     tCell4.innerHTML = "";
 }
 
+// Function to calculate amount of hours on site available to charge // 
+
+
+function calculateTime() {
+    //get values
+    var valuestart = document.getElementById('start-time').value;
+    var valuestop = document.getElementById('end-time').value;
+
+    //create date format          
+    var timeStart = new Date("01/01/2007 " + valuestart).getHours();
+    var timeEnd = new Date("01/01/2007 " + valuestop).getHours();
+
+    hourDiff = timeEnd - timeStart;
+
+    let dateFormat = new Date("01/01/2007 " + valuestop);
+    formattedEndTime = dateFormat.toLocaleTimeString([], { timeStyle: 'short' });
+    console.log(formattedEndTime);
+
+    return formattedEndTime;
+}
+
+
 
 // This function makes sure all fields are filled, then providing they are, each piece of user data is added to a table to view. // 
 // Additional validation is needed - AlphaNumeric for Registration and Numeric (integer for current range and range needed) for the remainder. Will add this after refactor // 
 
 submit.addEventListener("click", () => {
+    calculateTime();
     if (tCell1.innerHTML === "") {
-        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || hourDiff.value === "") {
             alert("All fields are required");
             return;
-        } if (dateValid.test(leavingTime.value)) {
+        } if (hourDiff > 0) {
             cell1 = carRegInput.value;
             cell2 = currentRange.value;
             cell3 = rangeNeeded.value;
-            cell4 = leavingTime.value;
-            cell4 = Math.floor(cell4);
+            cell4 = formattedEndTime;
             carInfo[0].push(cell1);
             carInfo[0].push(cell2);
             carInfo[0].push(cell3);
             carInfo[0].push(cell4);
+            carInfo[0].push(hourDiff);
             tCell1.innerHTML = carInfo1[0];
             tCell2.innerHTML = carInfo1[1];
             tCell3.innerHTML = carInfo1[2];
             tCell4.innerHTML = carInfo1[3];
         } else {
-            alert("Please use the indicated time format");
+            alert("Please ensure the car is on site for a minumum of 1 hour.");
             return;
         }
     } else if (tCell5.innerHTML === "") {
-        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || hourDiff.value === "") {
             alert("All fields are required");
             return;
         } if (dateValid.test(leavingTime.value)) {
             cell5 = carRegInput.value;
             cell6 = currentRange.value;
             cell7 = rangeNeeded.value;
-            cell8 = leavingTime.value;
-            cell8 = Math.floor(cell8);
+            cell8 = formattedEndTime;
             carInfo[1].push(cell5);
             carInfo[1].push(cell6);
             carInfo[1].push(cell7);
             carInfo[1].push(cell8);
+            carInfo[1].push(hourDiff);
             tCell5.innerHTML = carInfo2[0];
             tCell6.innerHTML = carInfo2[1];
             tCell7.innerHTML = carInfo2[2];
@@ -185,96 +209,97 @@ submit.addEventListener("click", () => {
             return;
         }
     } else if (tCell9.innerHTML === "") {
-        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || hourDiff.value === "") {
             alert("All fields are required");
             return;
         } if (dateValid.test(leavingTime.value)) {
             cell9 = carRegInput.value;
             cell10 = currentRange.value;
             cell11 = rangeNeeded.value;
-            cell12 = leavingTime.value;
-            cell12 = Math.floor(cell12);
+            cell12 = formattedEndTime;
             carInfo[2].push(cell9);
             carInfo[2].push(cell10);
             carInfo[2].push(cell11);
             carInfo[2].push(cell12);
+            carInfo[2].push(hourDiff);
             tCell9.innerHTML = carInfo3[0];
             tCell10.innerHTML = carInfo3[1];
             tCell11.innerHTML = carInfo3[2];
             tCell12.innerHTML = carInfo3[3];
         } else {
-            alert("Please use the indicated time format");
+            alert("Please ensure the car is on site for a minumum of 1 hour.");
             return;
         }
     } else if (tCell13.innerHTML === "") {
-        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || hourDiff.value === "") {
             alert("All fields are required");
             return;
         } if (dateValid.test(leavingTime.value)) {
             cell13 = carRegInput.value;
             cell14 = currentRange.value;
             cell15 = rangeNeeded.value;
-            cell16 = leavingTime.value;
-            cell16 = Math.floor(cell16);
+            cell16 = formattedEndTime;
             carInfo[3].push(cell13);
             carInfo[3].push(cell14);
             carInfo[3].push(cell15);
             carInfo[3].push(cell16);
+            carInfo[3].push(hourDiff);
             tCell13.innerHTML = carInfo4[0];
             tCell14.innerHTML = carInfo4[1];
             tCell15.innerHTML = carInfo4[2];
             tCell16.innerHTML = carInfo4[3];
         } else {
-            alert("Please use the indicated time format");
+            alert("Please ensure the car is on site for a minumum of 1 hour.");
             return;
         }
     } else if (tCell17.innerHTML === "") {
-        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || hourDiff.value === "") {
             alert("All fields are required");
             return;
         } if (dateValid.test(leavingTime.value)) {
             cell17 = carRegInput.value;
             cell18 = currentRange.value;
             cell19 = rangeNeeded.value;
-            cell20 = leavingTime.value;
-            cell20 = Math.floor(cell20);
+            cell20 = formattedEndTime;
             carInfo[4].push(cell17);
             carInfo[4].push(cell18);
             carInfo[4].push(cell19);
             carInfo[4].push(cell20);
+            carInfo[4].push(hourDiff);
             tCell17.innerHTML = carInfo5[0];
             tCell18.innerHTML = carInfo5[1];
             tCell19.innerHTML = carInfo5[2];
             tCell20.innerHTML = carInfo5[3];
         } else {
-            alert("Please use the indicated time format");
+            alert("Please ensure the car is on site for a minumum of 1 hour.");
             return;
         }
     } else if (tCell21.innerHTML === "") {
-        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || leavingTime.value === "") {
+        if (carRegInput.value === "" || currentRange.value === "" || rangeNeeded.value === "" || hourDiff.value === "") {
             alert("All fields are required");
             return;
         } if (dateValid.test(leavingTime.value)) {
             cell21 = carRegInput.value;
             cell22 = currentRange.value;
             cell23 = rangeNeeded.value;
-            cell24 = leavingTime.value;
-            cell24 = Math.floor(cell24);
+            cell24 = formattedEndTime;
             carInfo[5].push(cell21);
             carInfo[5].push(cell22);
             carInfo[5].push(cell23);
             carInfo[5].push(cell24);
+            carInfo[5].push(hourDiff);
             tCell21.innerHTML = carInfo6[0];
             tCell22.innerHTML = carInfo6[1];
             tCell23.innerHTML = carInfo6[2];
             tCell24.innerHTML = carInfo6[3];
             document.querySelector(".submit").style.display = "none";
         } else {
-            alert("Please use the indicated time format");
+            alert("Please ensure the car is on site for a minumum of 1 hour.");
             return;
         }
     }
-    clearFields('.reg-input', '.current-range', '.range-needed', '.leaving-time');
+    clearFields('.reg-input', '.current-range', '.range-needed');
+    hourDiff = "";
 })
 
 
@@ -327,6 +352,22 @@ function clearReg(i, RegNumber) {
 }
 
 
+clearBtn.addEventListener("click", () => {
+    y = 1;
+    cellNumber = 0;
+    for (y = 1; y <= 6; y++) {
+        for (cellNumber = 0; cellNumber < 12; cellNumber++) {
+            genTable.rows[y].cells[cellNumber].innerHTML = "";
+            genTable.rows[y].cells[cellNumber].classList.remove('charge');
+        }
+    }
+    y = 1;
+    cellNumber = 0;
+    powerused = 0;
+    colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+})
+
+
 // Main function for creating the charging schedule. Lots of extra functionality can be added to this, which I will do when I refactor / rebuild. So far the function grabs the registration names in order of user input, and adds them to the schedule table one by one. As each reg is added, the charge time needed is calculated, then the amount of solar energy is calculated. If the hour selected cannot facilitate full charging for the car (11kwh) then the next cell is checked. The schedule so far will ensure cars are charged the amount needed for their next journey + 10%, and display this exit range in the schedule also. // 
 
 // To be added - Factor in end time to ensure charging before leaving. Force charging even if no solar energy is available if end time doesn't allow only solar usage. Indicate this on the schedule with a different cell colour.
@@ -343,7 +384,7 @@ genBtn.addEventListener("click", () => {
     y = 1;
     cellNumber = 0;
     powerused = 0;
-    colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+    colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,];
     regCell.length = 0;
     for (i = 0; i < 6; i++) {
         if (carInfo[i][0] != undefined) {
@@ -384,28 +425,18 @@ genBtn.addEventListener("click", () => {
                 }
             }
         }
-        // THis function is taken from an unrelated piece of code, it's useless here. Let's see who notices it on the video.
-
-        genImage.addEventListener("click", () => {
-            getImg();
-            y = (y + 1);
-        }
-})
-
-
-// Function to clear all cells in the Generated schedule table //  This functionality is now also built in to the generate schedule function to allow edits to be made without clearing the whole schedule. I left the clear schedule button in to allow it to be cleared entirely is wanted, however. 
-
-clearBtn.addEventListener("click", () => {
-    y = 1;
-    cellNumber = 0;
-    for (y = 1; y <= 6; y++) {
-        for (cellNumber = 0; cellNumber < 12; cellNumber++) {
-            genTable.rows[y].cells[cellNumber].innerHTML = "";
-            genTable.rows[y].cells[cellNumber].classList.remove('charge');
-        }
     }
-    y = 1;
-    cellNumber = 0;
-    powerused = 0;
-    colPowerUsed = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+
 })
+
+
+
+        // Function to clear all cells in the Generated schedule table //  This functionality is now also built in to the generate schedule function to allow edits to be made without clearing the whole schedule. I left the clear schedule button in to allow it to be cleared entirely is wanted, however. 
+
+
+
+
+
+
+
+
